@@ -1,0 +1,21 @@
+.welcome{
+    width: 700px;
+    height: 400px;
+    margin: 60px auto;
+    background-color: lightgoldenrodyellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button__link{
+    width: 150px;
+    padding: 20px;
+    background-color: gray;
+    margin: 10px;
+    text-align: center;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 23px;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>Client</title>
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+          <li class="main-header__item">
+            <a href="<%= fromLink %>">Demande de réparation</a>
+          </li>
+          <li class="main-header__item">
+            <a href="<%= reparLink %>">Mes réparations</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+        <div class="reparation">
+            <table style="width:50%">
+                <thead>
+                    <tr>
+                      <th>N_reparation</th>
+                      <th>Nom_cat</th>
+                      <th>description</th>
+                      <th>Eau</th>
+                      <th>Etat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                      <% for(item of data) { %>
+                        <tr>
+                          <td><%= item.N_reparation %></td>
+                          <td><%= item.Nom_cat %></td>
+                          <td><%= item.description %></td>
+                          <td><%= item.eau %></td>
+                          <td><%= item.Etat %></td>
+                        </tr>
+                      <% } %>
+                    <% } %>
+                  </tbody>
+            </table>
+          </div>
+    </main>
+  </body>
+</html>

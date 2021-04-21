@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>Client</title>
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+          <li class="main-header__item">
+            <a href="<%= formLink %>">Demande de réparation</a>
+          </li>
+          <li class="main-header__item">
+            <a href="<%= reparLink %>">Mes réparations</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <form method="POST" id='ancien_client_form'>
+        <div class="form-control">
+          <% if(data) { %>
+          <label for="title">Nom</label>
+          <input type="text" name="Nom" id="Nom" readonly='true' value ='<%= data.Nom %>'>
+        </div>
+        <div class="form-control">
+          <label for="title">modele</label>
+          <input type="text" name="modele" id="modele" readonly='true' value ='<%= data.modele %>'/>
+        </div>
+        <div class="form-control">
+          <label for="title">Numéro de série</label>
+          <input type="text" name="N_serie" id="N_serie" readonly='true' value ='<%= data.id_client %>'/>
+        </div>
+        <% }%>
+        <div class="form-control">
+          <p>le drone a t'il été dans l'eau?</p>
+          <label for="oui"><input type="radio" id="oui" name="eau" value="oui" />
+          Oui</label><br />
+         
+          <label for="non"> <input type="radio" id="non" name="eau" value="non" active />Non</label><br />
+        </div>
+        <div class="form-control">
+          <p>catégorie de réparation</p>
+          
+          <label for="cache"><input type="checkbox" id="cache" name="categorie" value="cache" /> Cache</label><br />
+         
+          <label for="elices"> <input type="checkbox" id="elices" name="categorie" value="elices" active /> Elices</label><br />
+          
+          <label for="camera"><input type="checkbox" id="camera" name="categorie" value="camera" active /> Caméra</label><br />
+         
+          <label for="processeur"> <input type="checkbox" id="processeur" name="categorie" value="processeur" active /> Processeur</label><br />
+        </div>
+
+        <div class="form-control">
+            <p>Commentaire</p>
+            <textarea rows="4" cols="50" name="commentaire" form="ancien_client_form" placeholder="Entrer votre commentaire"></textarea>
+        </div>
+        <button class="btn" type="submit">Modifier</button>
+        <button class="btn" type="reset">Cancel</button>
+      </form>
+    </main>
+  </body>
+</html>

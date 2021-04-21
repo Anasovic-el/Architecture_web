@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>Check Client</title>
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+          <li class="main-header__item">
+            <a href="/">Demande de réparation</a>
+          </li>
+          <li class="main-header__item">
+            <a href="/clients/client_validation">Mes réparations</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <form method="POST" id='client_validation_form'>
+        <div class="form-control">
+          <label for="title">Nom</label>
+          <input type="text" name="Nom" id="Nom" />
+        </div>
+        <div class="form-control">
+          <label for="title">Numéro de série</label>
+          <input type="text" name="N_serie" id="N_serie" />
+        </div>
+        <button class="btn" type="submit">Submit</button>
+        <button class="btn" type="reset">Cancel</button>
+      </form>
+    </main>
+  </body>
+</html>
