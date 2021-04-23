@@ -1,6 +1,7 @@
 let express = require("express");
 const path = require("path");
 clientsRouter = require("./routes/clients");
+techniciensRouter = require("./routes/techniciens");
 const con = require("./server/db");
 
 const bodyParser = require("body-parser");
@@ -19,12 +20,13 @@ app.use((req, res, next) => {
   next();
 });
 
-// test git
+// public folder par défaut 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/clients", clientsRouter);
+app.use("/techniciens", techniciensRouter);
 
 app.use("/", (req, res) => {
   console.log("home page");

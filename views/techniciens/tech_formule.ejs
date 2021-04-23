@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>Client</title>
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+          <li class="main-header__item">
+            <a href="modifications">modifier les réparations</a>
+          </li>
+          <li class="main-header__item">
+            <a href="mes_reparations">Mes réparations</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <form method="POST" id='tech_modification_form'>
+        <div class="form-control">
+          <% if(id) { %>
+          <label for="title">Technicien ID</label>
+          <input type="text" name="id_tech" id="id_tech" disabled value ='<%= id %>'>
+          <%}%>
+        </div>
+        <% if (data.length > 0) { %>
+          <div class="form-control">
+                <% for(item of data) { %>
+                    <div class="reparCat__form">
+                        <span>N_reparation : <%= item.N_reparation%></span>
+                        <span>Categorie : <%= item.Nom_cat%></span></br>
+                        <span>Etat : <%= item.Etat%></span></br>
+                        <div class="label_group"> 
+                            <label for="<%= item.id_repar_cat%>">
+                                <input type="radio" name="<%= item.id_repar_cat%>"  value="En cours">En cours 
+                            </label>
+                            <label for="<%= item.id_repar_cat%>&<%=item.Nom_cat%>">
+                                <input type="radio" name="<%= item.id_repar_cat%>"  value="Fini">Fini 
+                            </label>
+                            <label for="<%= item.id_repar_cat%>">
+                              <input type="radio" name="<%= item.id_repar_cat%>"  value="Impossible">Impossible
+                          </label></br>                            
+                        </div>
+                    </div>
+                    <% } %>
+                  </div>
+                  <button class="btn" type="submit">Modifier</button>
+                  <button class="btn" type="reset">Cancel</button>
+              <% }else{ %>
+                <div class="reparCat__form">
+                  <h1>Pas de Réparations</h1>
+                </div>
+                <% }%>
+      </form>
+    </main>
+  </body>
+</html>
