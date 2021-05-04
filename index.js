@@ -1,7 +1,9 @@
 let express = require("express");
 const path = require("path");
-clientsRouter = require("./routes/clients");
-techniciensRouter = require("./routes/techniciens");
+let clientsRouter = require("./routes/clients");
+let techniciensRouter = require("./routes/techniciens");
+let clientsApiRouter = require("./routes/clientsAPI");
+let techniciensApiRouter = require("./routes/techniciensAPI");
 const con = require("./server/db");
 
 const bodyParser = require("body-parser");
@@ -26,7 +28,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/clients", clientsRouter);
+app.use("/api/clients", clientsApiRouter);
+
 app.use("/techniciens", techniciensRouter);
+app.use("/api/techniciens", techniciensApiRouter);
 
 app.use("/", (req, res) => {
   console.log("home page");
