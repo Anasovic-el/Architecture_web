@@ -106,4 +106,8 @@ module.exports = {
   deleteReparCat: (req, res) => {
     clientModalAPI.deleteReparCat(req, res);
   },
+  
+  deleteOneReparCat: (req, res) => {
+    clientModalAPI.deleteOneReparCat(req, res);
+  },
 };

@@ -6,6 +6,7 @@ var conn = mysql.createConnection({
   password: "920Master.",
   database: "drone_repair",
   insecureAuth: true,
+  multipleStatements: true,//plusieur qwery en meme temps
 });
 conn.connect(function (err) {if (err) console.log(err);});
 module.exports = conn;

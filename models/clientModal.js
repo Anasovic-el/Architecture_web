@@ -13,7 +13,7 @@ module.exports = {
   createReparation: (data) => {
     const { categorie } = data;
     const Num_cat =
-      typeof categorie === "object" ? categorie.join("&") : categorie;
+      typeof categorie === "object" ? categorie.join("&") : categorie; //
     console.log("Num_cat", Num_cat);
     con.query(`INSERT INTO Reparation SET 
           N_reparation = '${data.Nom}&${data.N_serie}',
@@ -34,6 +34,7 @@ module.exports = {
     Etat = 'En attente'
     `);
   },
+
 
   updateClient: (id, data) => {
     const { categorie } = data;
@@ -71,15 +72,12 @@ module.exports = {
       (err, result) => {
         if (err) console.log("err", err);
         console.log("res", result);
-        if (result?.length !== 0) { //lorque je n'ai pas le result
-          console.log("modified Page");
+        if (result?.length > 0) { 
           const id = result[0].id_client;
           const Nom = result[0].Nom;
           res.redirect(`/clients/${Nom}-${id}`);
-          console.log("after  redirect");
         } else {
-          console.log("not modified page");
-          res.render("clients/client-validation");
+          res.render("clients/client-validation-error");
         }
       }
     );
@@ -123,5 +121,18 @@ module.exports = {
         });
       }
     );
+  },
+  deleteOneReparCat: (req, res) => {
+    const { id, Nom, cat } = req.params;
+    con.query(`DELETE FROM ReparCat WHERE N_reparation = '${Nom}&${id}' AND Nom_cat = '${cat}'`,
+    (err, result) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+      else{
+      res.status(200).json({message: 'Delete Successful'});
+      }
+    }
+  );
   },
 };

@@ -1,12 +1,12 @@
 let express = require("express");
 const path = require("path");
+const cors = require("cors");//API call
 let clientsRouter = require("./routes/clients");
 let techniciensRouter = require("./routes/techniciens");
 let clientsApiRouter = require("./routes/clientsAPI");
 let techniciensApiRouter = require("./routes/techniciensAPI");
 const con = require("./server/db");
 
-const bodyParser = require("body-parser");
 
 let app = express();
 
@@ -16,14 +16,16 @@ app.use(express.json());
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-
+app.use(cors());
 app.use((req, res, next) => {
-  req.con = con;
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "OPTIONS,GET,POST,PUT,PATCH,DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
-});
-
-// public folder par défaut 
-app.use(bodyParser.urlencoded({ extended: true }));
+});//pour les appelle API 
 
 app.use(express.static(path.join(__dirname, "public")));
 

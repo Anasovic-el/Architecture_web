@@ -1,6 +1,5 @@
 let express = require("express");
 let router = express.Router();
-//const bodyParser = require("body-parser");
 let clients = require("../models/clientModal");
 let clientsController = require("../controllers/clientController");
 
