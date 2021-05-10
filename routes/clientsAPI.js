@@ -46,7 +46,7 @@ router.get("/:Nom-:id/repar-categorie", (req, res) => {
 });
 
 router.delete("/:Nom-:id-:cat/delete", (req, res) => {
-  clientsControllerAPI.deleteOneReparCat(req, res);
+  clientsControllerAPI.deleteReparCat(req, res);
 });
 
 module.exports = router;

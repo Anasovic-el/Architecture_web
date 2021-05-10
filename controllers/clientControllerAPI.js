@@ -40,7 +40,7 @@ module.exports = {
           } else {
             clientModalAPI.createReparCat(data, categorie, res);
           }
-          res.status(400).json({ message: "Client created successfuly" });
+          res.status(200).json({ message: "Client created successfuly" });
         }
       }
     );
@@ -107,7 +107,4 @@ module.exports = {
     clientModalAPI.deleteReparCat(req, res);
   },
   
-  deleteOneReparCat: (req, res) => {
-    clientModalAPI.deleteOneReparCat(req, res);
-  },
 };
