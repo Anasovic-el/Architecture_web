@@ -22,13 +22,10 @@ router.put("/:Nom-:id", (req, res) => {// modifer le
 });
 
 
-// 
-
 router.get("/all_reparations", (req, res) => {
   clientsControllerAPI.getReparations(req, res);
 });
 
-// 
 router.get("/:Nom-:id/reparations", (req, res) => {
   clientsControllerAPI.getReparation(req, res);
 });

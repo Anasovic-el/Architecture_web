@@ -4,12 +4,12 @@ module.exports = {
   addClient: (data) => {
     clientModal.createReparation(data);
     clientModal.createClient(data);
-    if (typeof data.categorie === "object") {
+    if (typeof data.categorie === "object") { //coche plusieurs
       data.categorie.forEach((categorie) => {
         clientModal.createRepCat(data, categorie);
       });
     } else {
-      clientModal.createRepCat(data, data.categorie);
+      clientModal.createRepCat(data, data.categorie); //coche une seul 
     }
   },
   findClient: (data, res) => {
@@ -32,7 +32,7 @@ module.exports = {
     }
   },
   getClient: (id, Nom, res) => {
-    const formLink = `/clients/${Nom}-${id}/formule`;
+    const formLink = `/clients/${Nom}-${id}/formule`;// pour les variable dynamique les guillemet
     const reparLink = `/clients/${Nom}-${id}/mes_reparations`;
     res.render("clients/ancien-client", {
       formLink: formLink,

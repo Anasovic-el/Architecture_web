@@ -2,7 +2,6 @@ const con = require("../server/db");
 const url = require("url");
 module.exports = {
   getClients: (req, res) => {
-    const data = req.body;
     con.query(`SELECT * FROM Client`, (err, result) => {
       if (err) {
         res.status(400).json({ message: err });

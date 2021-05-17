@@ -11,9 +11,9 @@ module.exports = {
   },
 
   createReparation: (data) => {
-    const { categorie } = data;
+    const { categorie } = data; // = const categorie = data.categorie notion destructuration 
     const Num_cat =
-      typeof categorie === "object" ? categorie.join("&") : categorie; //
+      typeof categorie === "object" ? categorie.join("&") : categorie; // si objet concaténation sinon juste catégorie car dans my sql on enregistre une seule valeur 
     console.log("Num_cat", Num_cat);
     con.query(`INSERT INTO Reparation SET 
           N_reparation = '${data.Nom}&${data.N_serie}',
@@ -115,7 +115,7 @@ module.exports = {
         if (err) console.log("err", err);
         console.log("res", result);
         res.render("clients/ancien_reparation", {
-          data: result,
+          data: result,// affiche les donnée dans ancienne rep
           fromLink: formLink,
           reparLink: reparLink,
         });

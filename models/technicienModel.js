@@ -26,12 +26,12 @@ module.exports = {
         });
     },
     updateReparCat: (id,data,res) => {
-        for (key in data){
+        for (id_repar_cat in data){
             con.query(
                 `UPDATE ReparCat SET 
-                Etat = '${data[key]}',
+                Etat = '${data[id_repar_cat]}',
                 tech_id = '${id}' 
-                WHERE id_repar_cat=${key}
+                WHERE id_repar_cat=${id_repar_cat}
               `,
               (err, result) => {
                   if (err)console.log("err", err); 
